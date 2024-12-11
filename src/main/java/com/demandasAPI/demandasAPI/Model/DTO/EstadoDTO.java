@@ -10,6 +10,6 @@ import java.util.List;
 @Builder
 public class EstadoDTO {
     private ObjectId id_estado;
-    private List<String> Situacion;
+    private String Situacion;
     private String Estado;
 }

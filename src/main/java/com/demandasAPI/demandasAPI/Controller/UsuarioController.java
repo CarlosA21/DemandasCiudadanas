@@ -1,12 +1,11 @@
 package com.demandasAPI.demandasAPI.Controller;
 
 import com.demandasAPI.demandasAPI.Model.DTO.UsuarioDTO;
+import org.springframework.web.bind.annotation.RequestParam;
 import com.demandasAPI.demandasAPI.Model.Usuario;
 import com.demandasAPI.demandasAPI.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/usuarios")
@@ -18,6 +17,8 @@ public class UsuarioController {
     public Usuario createUsuario(@RequestBody UsuarioDTO usuarioDTO){
         return usuarioService.createUsuario(usuarioDTO);
     }
+    
+    
 
     @GetMapping
     public Iterable<Usuario> getAllusers(){
@@ -37,5 +38,15 @@ public class UsuarioController {
     @DeleteMapping("/{id}")
     public void deleteuser(@PathVariable String id){
         usuarioService.deleteuser(id);
+    }
+
+    @PostMapping("/login")
+    public Usuario verifyLogin(@RequestBody UsuarioDTO loginRequest) {
+        Usuario usuario = usuarioService.verifyLogin(loginRequest.getEmail(), loginRequest.getClave());
+        if (usuario != null) {
+            return usuario;
+        } else {
+            throw new RuntimeException("Usuario no encontrado");
+        }
     }
 }

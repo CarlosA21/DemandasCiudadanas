@@ -15,5 +15,5 @@ public class Transicion {
     private ObjectId id_transicion;
     private int Responsable;
     private int Estado;
-    private List<String> lista;
+    private String lista;
 }

@@ -14,6 +14,6 @@ import java.util.List;
 public class Estado {
     @Id
     private ObjectId id_estado;
-    private List<String> Situacion;
+    private String Situacion;
     private String Estado;
 }

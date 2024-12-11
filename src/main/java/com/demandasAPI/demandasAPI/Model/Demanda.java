@@ -21,12 +21,12 @@ public class Demanda {
     private int tipologia;
     private int demandante;
     @Field("clasificacion")
-    private List<String> clasificacion;
+    private String clasificacion;
 
     private  String descripcion;
     private Float latitud;
     private Float longitud;
     private int prioridad;
 
-    private Binary imagen;
+
 }

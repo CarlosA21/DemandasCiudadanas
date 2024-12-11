@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
@@ -58,6 +59,29 @@ public class UsuarioService {
     public void deleteuser(String id){
         usuarioRepository.deleteById(id);
     }
+
+    // Verificar información de inicio de sesión
+    public Usuario verifyLogin(String email, String clave) {
+        try {
+            // Fetch the first result if duplicates exist
+            Optional<Usuario> usuarioOptional = usuarioRepository.findFirstByEmail(email);
+            if (usuarioOptional.isPresent()) {
+                Usuario usuario = usuarioOptional.get();
+                if (usuario.getClave().equals(clave)) {
+                    return usuario;
+                }
+            } else {
+                throw new RuntimeException("User not found");
+            }
+            return null;
+        }catch (Exception e){
+            String message = "Usuario no encontrado";
+            throw new RuntimeException(message);
+
+        }
+
+    }
+    
 
 }
 

@@ -25,7 +25,6 @@ public class DemandaService {
                 .latitud(demandaDTO.getLatitud())
                 .longitud(demandaDTO.getLongitud())
                 .prioridad(demandaDTO.getPrioridad())
-                .imagen(demandaDTO.getImagen())
                 .build();
         return demandaRepository.save(demanda);
     }
@@ -47,7 +46,6 @@ public class DemandaService {
             Demanda.setLatitud(demandaDTO.getLatitud());
             Demanda.setLongitud(demandaDTO.getLongitud());
             Demanda.setPrioridad(demandaDTO.getPrioridad());
-            Demanda.setImagen(demandaDTO.getImagen());
             return demandaRepository.save(Demanda);}).orElse(null);
 
     }
